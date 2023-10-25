@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   exits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/25 16:01:37 by uyilmaz          ###   ########.fr       */
+/*   Created: 2023/10/25 15:57:59 by uyilmaz           #+#    #+#             */
+/*   Updated: 2023/10/25 16:08:46 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	allocation_exit(t_data *map_data)
 {
-	t_data	*map_data;
+	perror("Allocation Error\n");
+	exit (3);
+}
 
-	if (ac != 2)
-		wrong_argument_exit(NULL, 1);
-	map_data = malloc(sizeof(t_data));
-	if (!map_data)
-		allocation_exit(map_data);
-	map_data->map_name = av[1];
-	check_map(map_data);
-	return (0);
+void	wrong_argument_exit(t_data *map_data, int error_code)
+{
+	if (error_code == 1)
+		perror("Wrong Argument Error\n");
+	else if (error_code == 2)
+		perror("The Map Name is Invalid Error\n");
+	exit (4);
 }
