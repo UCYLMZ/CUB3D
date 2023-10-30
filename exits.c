@@ -26,3 +26,9 @@ void	wrong_argument_exit(t_data *map_data, int error_code)
 		perror("The Map Name is Invalid Error\n");
 	exit (4);
 }
+
+void	wrong_map_exit(t_data *map_data)
+{
+	perror("Map Error\n");
+	exit(5);
+}

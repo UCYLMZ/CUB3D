@@ -12,47 +12,93 @@
 
 #include "cub3d.h"
 
-int	get_line_count(t_data *map_data)
+void	map_multiply(t_data *map_data, int first, int second)
 {
-	int		fd;
-	int		count;
-	char	*line;
-	char	*map1;
-	
-	map1 = ft_strjoin("MAPS", "/");
-	map_data->map_path = ft_strjoin(map1, map_data->map_name);
-	if (!map1 || !map_data->map_path)
+	int	i;
+
+	map_data->map = malloc(sizeof(char *) * (second - first));
+	if (!map_data->map)
 		allocation_exit(map_data);
-	if (map1)
-		free(map1);
-	fd = open(map_data->map_path, O_RDONLY);
-	if (fd < 0)
-		wrong_argument_exit(map_data, 2);
-	line = get_next_line(fd);
-	count = 0;
-	while (line)
+	i = -1;
+	printf("first:%d\nsecond%d\n", first, second);
+	while (++first < second)
 	{
-		count++;
-		free(line);
-		line = get_next_line(fd);	
+		printf("line: %s", map_data->whole_map[first]);
+		map_data->map[++i] = ft_strdup(map_data->whole_map[first]);
 	}
-	close(fd);
-	free(line);
-	return (count);
+	map_data->map[i] = NULL;
 }
 
-char	**get_map(t_data *map_data)
+void	map_itself(t_data *map_data, int first_space)
 {
+	int	i;
+	int	second_space;
+
+	i = -1;
+	while (++i < map_data->line_count)
+	{
+		if (map_data->whole_map[i][0] == ' ')
+		{
+			second_space = i;
+			while (map_data->whole_map[i][0] == ' ')
+				i++;
+		}
+		if (map_data->whole_map[i] == NULL)
+		{
+			second_space = i;
+			map_multiply(map_data, first_space, second_space);
+		}
+		else
+			wrong_map_exit(map_data);
+	}
+}
+
+void	get_infos(t_data *map_data, char **whole_map)
+{
+	int	i;
+
+	i = -1;
+	while (++i < map_data->line_count)
+	{
+		if (whole_map[i][0] == 'N')
+			map_data->north = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == 'S')
+			map_data->south = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == 'W')
+			map_data->west = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == 'E')
+			map_data->east = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == 'F')
+			map_data->floor = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == 'C')
+			map_data->ceiling = ft_strdup(whole_map[i]);
+		else if (whole_map[i][0] == ' ')
+			map_itself(map_data, i);
+		else
+			wrong_map_exit(map_data);
+	}
+}
+
+void	get_map(t_data *map_data)
+{
+	int	i;
+	int	fd;
+
 	map_data->line_count = get_line_count(map_data);
 	map_data->whole_map = malloc(sizeof(char *) * (map_data->line_count + 1));
 	if (!(map_data->whole_map))
 		allocation_exit(map_data);
-	// int i = -1;
-	// while ((map_data->whole_map)[++i])
-	// 	printf("%s", (map_data->whole_map)[i]);
+	fd = open(map_data->map_path, O_RDONLY);
+	if (fd < 0)
+		wrong_argument_exit(map_data, 2);
+	i = -1;
+	while (++i < map_data->line_count)
+		map_data->whole_map[i] = get_next_line(fd);
+	map_data->whole_map[i] = NULL;
 }
 
 void	check_map(t_data *map_data)
 {
-	map_data->whole_map = get_map(map_data);
+	get_map(map_data);
+	get_infos(map_data, map_data->whole_map);
 }

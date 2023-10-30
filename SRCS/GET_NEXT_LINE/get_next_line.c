@@ -50,31 +50,3 @@ char	*get_next_line(int fd)
 	holder = after_next_line(holder);
 	return (result);
 }
-
-/*int main()
-{
-	int fd = open("test2.txt", O_RDONLY);
-
-	char *line;
-	line = get_next_line(fd);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("*%03hhu*", line[5]);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("%s", line);
-
-	line = get_next_line(fd);
-	printf("%s", line);
-}*/

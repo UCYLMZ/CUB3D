@@ -23,5 +23,9 @@ int	main(int ac, char **av)
 		allocation_exit(map_data);
 	map_data->map_name = av[1];
 	check_map(map_data);
+	int i = -1;
+	// while ((map_data->map)[++i])
+	// 	printf("%s", (map_data->map)[i]);
+	//system("leaks cub3D");
 	return (0);
 }
