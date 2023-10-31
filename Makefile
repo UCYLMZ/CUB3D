@@ -1,5 +1,5 @@
 SRCS	=	SRCS/GET_NEXT_LINE/get_next_line.c	SRCS/GET_NEXT_LINE/get_next_line_utils.c	\
-		cub3d.c	check_map.c exits.c utils_map.c
+		cub3d.c	check_map.c exits.c get_info.c utils_info.c
 
 LIBFT	=	SRCS/LIBFT/libft.a
 

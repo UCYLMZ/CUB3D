@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   utils_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:24:03 by uyilmaz          ###   ########.fr       */
+/*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
+/*   Updated: 2023/10/31 17:06:34 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	is_line_empty(char *line)
 {
-	t_data	*map_data;
+	int	i;
 
-	if (ac != 2)
-		wrong_argument_exit(NULL, 1);
-	map_data = malloc(sizeof(t_data));
-	if (!map_data)
-		allocation_exit(map_data);
-	map_data->map_name = av[1];
-	check_map(map_data);
-	// int i = -1;
-	// while ((map_data->map)[++i])
-	// printf("%s", (map_data->map)[i]);
-	// system("leaks cub3D");
+	i = 0;
+	while ((line[i] >= 9 && line[i] <= 13) || line[i] == 32)
+		i++;
+	if (line[i] == '\0')
+		return (1);
 	return (0);
 }
