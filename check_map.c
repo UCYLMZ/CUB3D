@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:23:38 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:14:26 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	check_map(t_data *map_data)
 {
 	get_map(map_data);
 	get_infos(map_data, map_data->whole_map);
+	
 }
