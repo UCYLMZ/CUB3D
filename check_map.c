@@ -27,7 +27,7 @@ int	get_line_count(t_data *map_data)
 		free(map1);
 	fd = open(map_data->map_path, O_RDONLY);
 	if (fd < 0)
-		wrong_argument_exit(map_data, 2);
+		wrong_argument_exit(map_data, 11);
 	line = get_next_line(fd);
 	count = 0;
 	while (line)
@@ -52,7 +52,7 @@ void	get_map(t_data *map_data)
 		allocation_exit(map_data);
 	fd = open(map_data->map_path, O_RDONLY);
 	if (fd < 0)
-		wrong_argument_exit(map_data, 2);
+		wrong_argument_exit(map_data, 11);
 	i = -1;
 	while (++i < map_data->line_count)
 		map_data->whole_map[i] = get_next_line(fd);
@@ -68,6 +68,6 @@ void	get_map(t_data *map_data)
 void	check_map(t_data *map_data)
 {
 	get_map(map_data);
-	get_infos(map_data, map_data->whole_map);
-	
+	clear_map(map_data);
+	check_rgb(map_data);
 }

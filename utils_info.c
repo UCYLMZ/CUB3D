@@ -31,7 +31,7 @@ void	get_textures(t_data *map_data, char *trimmed)
 	char	**splitted;
 
 	flag = 0;
-	splitted = ft_split(trimmed, ' ');
+	splitted = ft_split_special(trimmed);
 	if (splitted[0][0] == 'E' && splitted[0][1] == 'A')
 		map_data->east = ft_strdup(splitted[1]);
 	else if (splitted[0][0] == 'W' && splitted[0][1] == 'E')
@@ -43,17 +43,32 @@ void	get_textures(t_data *map_data, char *trimmed)
 	else
 		flag = 1;
 	i = -1;
-	while (splitted[++i])
-		free(splitted[i]);
-	free(splitted[i]);
-	free(splitted);
+	free_double_char(splitted);
 	if (flag == 1)
-		wrong_map_exit(map_data);
+		wrong_map_exit(map_data, 20);
 }
 
-void	set_ceiling_floor(t_data *map_data)
+void	set_ceiling_floor(t_data *map_data, char **splitted)
 {
-	
+	int	count;
+
+	count = 0;
+	while (splitted[count] != NULL)
+		count++;
+	if (splitted[0][0] == 'F' && count == 4)
+	{
+		map_data->f_red = ft_atoi(splitted[1]);
+		map_data->f_green = ft_atoi(splitted[2]);
+		map_data->f_blue = ft_atoi(splitted[3]);
+	}
+	else if (splitted[0][0] == 'C' && count == 4)
+	{
+		map_data->c_red = ft_atoi(splitted[1]);
+		map_data->c_green = ft_atoi(splitted[2]);
+		map_data->c_blue = ft_atoi(splitted[3]);
+	}
+	else
+		wrong_map_exit(map_data, 20);
 }
 
 void	get_ceiling_floor(t_data *map_data, char *trimmed)
@@ -63,22 +78,23 @@ void	get_ceiling_floor(t_data *map_data, char *trimmed)
 	int		flag;
 	char	**splitted;
 
-	splitted = ft_split(trimmed, ' ');
-	i = -1;
-	j = 1;
 	flag = 0;
+	splitted = ft_split_special(trimmed);
+	i = 0;
 	while (splitted[++i])
 	{
-		if (j > 5)
+		if (flag == 1)
 			break ;
-		while (splitted[i][j])
+		j = -1;
+		while (splitted[i][++j])
 		{
-			if (!ft_isdigit(splitted[i][j]))
+			if (!ft_isdigit(splitted[i][j] || j > 4))
+			{
 				flag = 1;
-			j += 2;
+				break ;
+			}
 		}
 	}
-	if (flag == 1)
-		wrong_map_exit(map_data);
-	set_ceiling_floor(map_data);
+	set_ceiling_floor(map_data, splitted);
+	free_double_char(splitted);
 }

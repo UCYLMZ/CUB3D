@@ -15,20 +15,44 @@
 void	allocation_exit(t_data *map_data)
 {
 	perror("Allocation Error\n");
-	exit (3);
+	system("leaks cub3D");
+	exit (1);
 }
 
 void	wrong_argument_exit(t_data *map_data, int error_code)
 {
-	if (error_code == 1)
+	if (error_code == 10)
 		perror("Wrong Argument Error\n");
-	else if (error_code == 2)
+	else if (error_code == 11)
 		perror("The Map Name is Invalid Error\n");
-	exit (4);
+
+	system("leaks cub3D");
+	exit (error_code);
 }
 
-void	wrong_map_exit(t_data *map_data)
+void	wrong_map_exit(t_data *map_data, int code)
 {
-	perror("Map Error\n");
-	exit(5);
+	if (code == 20)
+		perror("Wrong Data in .cub File Error\n");
+	else if (code == 21)
+		perror("Wrong RGB value Error\n");
+	else if (code == 22)
+		perror("Empty Line In The Map Error\n");
+
+	system("leaks cub3D");
+	exit(code);
+}
+
+void	free_double_char(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr[i]);
+	free(ptr);
 }

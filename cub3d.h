@@ -41,7 +41,14 @@ typedef struct s_data
 void	check_map(t_data *map_data);
 void	allocation_exit(t_data *map_data);
 void	wrong_argument_exit(t_data *map_data, int error_code);
-void	wrong_map_exit(t_data *map_data);
+void	wrong_map_exit(t_data *map_data, int code);
 int		is_line_empty(char *line);
+char	**ft_split_special(const char *s);
+void	clear_map(t_data *map_data);
+void	get_textures(t_data *map_data, char *trimmed);
+void	get_ceiling_floor(t_data *map_data, char *trimmed);
+void	free_double_char(char **ptr);
+int		is_it_ws(int c);
+void	check_rgb(t_data *map_data);
 
 #endif
