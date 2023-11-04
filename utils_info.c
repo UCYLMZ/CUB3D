@@ -48,11 +48,16 @@ void	get_textures(t_data *map_data, char *trimmed)
 		wrong_map_exit(map_data, 20);
 }
 
-void	set_ceiling_floor(t_data *map_data, char **splitted)
+void	set_ceiling_floor(t_data *map_data, char **splitted, int flag)
 {
 	int	count;
 
 	count = 0;
+	if (flag == 1)
+	{
+		free_double_char(splitted);
+		wrong_map_exit(map_data, 21);
+	}
 	while (splitted[count] != NULL)
 		count++;
 	if (splitted[0][0] == 'F' && count == 4)
@@ -68,7 +73,7 @@ void	set_ceiling_floor(t_data *map_data, char **splitted)
 		map_data->c_blue = ft_atoi(splitted[3]);
 	}
 	else
-		wrong_map_exit(map_data, 20);
+		wrong_map_exit(map_data, 21);
 }
 
 void	get_ceiling_floor(t_data *map_data, char *trimmed)
@@ -86,15 +91,16 @@ void	get_ceiling_floor(t_data *map_data, char *trimmed)
 		if (flag == 1)
 			break ;
 		j = -1;
-		while (splitted[i][++j])
+		while (splitted[i][j])
 		{
-			if (!ft_isdigit(splitted[i][j] || j > 4))
+			if (!ft_isdigit(splitted[i][j] || i > 3))
 			{
 				flag = 1;
 				break ;
 			}
+			j++;
 		}
 	}
-	set_ceiling_floor(map_data, splitted);
+	set_ceiling_floor(map_data, splitted, flag);
 	free_double_char(splitted);
 }

@@ -15,7 +15,7 @@
 void	allocation_exit(t_data *map_data)
 {
 	perror("Allocation Error\n");
-	system("leaks cub3D");
+	// system("leaks cub3D");
 	exit (1);
 }
 
@@ -26,7 +26,7 @@ void	wrong_argument_exit(t_data *map_data, int error_code)
 	else if (error_code == 11)
 		perror("The Map Name is Invalid Error\n");
 
-	system("leaks cub3D");
+	// system("leaks cub3D");
 	exit (error_code);
 }
 
@@ -38,8 +38,10 @@ void	wrong_map_exit(t_data *map_data, int code)
 		perror("Wrong RGB value Error\n");
 	else if (code == 22)
 		perror("Empty Line In The Map Error\n");
+	else if (code == 23)
+		perror("Wrong Texture File Name Error\n");
 
-	system("leaks cub3D");
+	// system("leaks cub3D");
 	exit(code);
 }
 
