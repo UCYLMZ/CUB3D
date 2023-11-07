@@ -36,6 +36,7 @@ typedef struct s_data
 	char	*south;
 	char	*west;
 	char	*east;
+	char	direction;
 }	t_data;
 
 void	check_map(t_data *map_data);
@@ -50,5 +51,7 @@ void	get_ceiling_floor(t_data *map_data, char *trimmed);
 void	free_double_char(char **ptr);
 int		is_it_ws(int c);
 void	check_rgb(t_data *map_data);
+void	check_map_characters(t_data *map_data, char **map);
+void	check_borders(t_data *map_data, char **map);
 
 #endif

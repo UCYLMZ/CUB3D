@@ -90,10 +90,10 @@ void	get_ceiling_floor(t_data *map_data, char *trimmed)
 	{
 		if (flag == 1)
 			break ;
-		j = -1;
+		j = 0;
 		while (splitted[i][j])
 		{
-			if (!ft_isdigit(splitted[i][j] || i > 3))
+			if ((!ft_isdigit(splitted[i][j]) || i > 3))
 			{
 				flag = 1;
 				break ;

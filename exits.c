@@ -33,14 +33,23 @@ void	wrong_argument_exit(t_data *map_data, int error_code)
 void	wrong_map_exit(t_data *map_data, int code)
 {
 	if (code == 20)
-		perror("Wrong Data in .cub File Error\n");
+		perror("Wrong Or Missing Data in .cub File Error\n");
 	else if (code == 21)
 		perror("Wrong RGB value Error\n");
 	else if (code == 22)
-		perror("Empty Line In The Map Error\n");
+		perror("Empty Line In The Map Or Extra Data Error\n");
 	else if (code == 23)
 		perror("Wrong Texture File Name Error\n");
-
+	else if (code == 24)
+		perror("Wrong Character In Empty Line Error\n");
+	else if (code == 25)
+		perror("Wrong Character In The Map Error\n");
+	else if (code == 26)
+		perror("Multiple Starting Point Error\n");
+	else if (code == 27)
+		perror("There Is No Starting Point In The Map Error\n");
+	else if (code == 28)
+		perror("Map Must Be Covered By Walls Correctly Error\n");
 	// system("leaks cub3D");
 	exit(code);
 }

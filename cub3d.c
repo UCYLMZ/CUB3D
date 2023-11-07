@@ -30,13 +30,14 @@ int	main(int ac, char **av)
 		printf("%s", map_data->map[i]);
 	printf("\nw:%s\ne:%s\nn:%s\ns:%s\n\n",
 	map_data->west, map_data->east, map_data->north,map_data->south);
-	printf("floor:\n%d %d %d\nceiling:\n%d %d %d\n",
+	printf("floor:\n%d %d %d\nceiling:\n%d %d %d\nstarting:%c\n",
 	map_data->f_red, 
 	map_data->f_green, 
 	map_data->f_blue, 
 	map_data->c_red, 
 	map_data->c_green, 
-	map_data->c_blue);
+	map_data->c_blue,
+	map_data->direction);
 	// system("leaks cub3D");
 	return (0);
 }

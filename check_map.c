@@ -41,6 +41,25 @@ int	get_line_count(t_data *map_data)
 	return (count);
 }
 
+void	check_empty_lines(t_data *map_data, char **map)
+{
+	int	i;
+
+	i = -1;
+	while (map[++i])
+	{
+		if ((!ft_strnstr(map[i], "WE", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "NO", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "SO", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "EA", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "F", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "C", ft_strlen(map[i])))
+			&& (!ft_strnstr(map[i], "1", ft_strlen(map[i])))
+			&& (map[i][0] != '\n'))
+			wrong_map_exit(map_data, 24);
+	}
+}
+
 void	get_map(t_data *map_data)
 {
 	int	i;
@@ -57,6 +76,8 @@ void	get_map(t_data *map_data)
 	while (++i < map_data->line_count)
 		map_data->whole_map[i] = get_next_line(fd);
 	map_data->whole_map[i] = NULL;
+	check_empty_lines(map_data, map_data->whole_map);
+	map_data->direction = '0';
 	map_data->ceiling = NULL;
 	map_data->floor = NULL;
 	map_data->north = NULL;
@@ -70,4 +91,6 @@ void	check_map(t_data *map_data)
 	get_map(map_data);
 	clear_map(map_data);
 	check_rgb(map_data);
+	check_map_characters(map_data, map_data->map);
+	check_borders(map_data, map_data->map);
 }
