@@ -14,9 +14,13 @@
 
 void	fill_info(t_data *map_data, char *line)
 {
+	int		i;
 	char	*trimmed;
 
-	trimmed = ft_strtrim(line, " ");
+	i = 0;
+	while (is_it_ws(line[i]))
+		i++;
+	trimmed = ft_strdup(&line[i]);
 	if ((trimmed[0] == 'C' || trimmed[0] == 'F') && map_data->floor == NULL
 		&& (trimmed[1] == ' ' && map_data->ceiling == NULL))
 		get_ceiling_floor(map_data, trimmed);

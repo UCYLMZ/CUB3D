@@ -24,6 +24,19 @@ int	is_line_empty(char *line)
 	return (0);
 }
 
+char	*get_path(char *trimmed)
+{
+	int	i;
+
+	i = -1;
+	while (trimmed[++i] != '.' && trimmed[i] && trimmed[i + 1] != '/')
+	{
+		if (!trimmed[i])
+			break ;
+	}
+	return (ft_strdup(&trimmed[i]));
+}
+
 void	get_textures(t_data *map_data, char *trimmed)
 {
 	int		i;
@@ -32,6 +45,11 @@ void	get_textures(t_data *map_data, char *trimmed)
 
 	flag = 0;
 	splitted = ft_split_special(trimmed);
+	if (!splitted[1])
+	{
+		free_double_char(splitted);
+		wrong_map_exit(map_data, 23);
+	}
 	if (splitted[0][0] == 'E' && splitted[0][1] == 'A')
 		map_data->east = ft_strdup(splitted[1]);
 	else if (splitted[0][0] == 'W' && splitted[0][1] == 'E')

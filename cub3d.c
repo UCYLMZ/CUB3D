@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	printf("map:\n");
 	while (map_data->map[++i])
 		printf("%s", map_data->map[i]);
-	printf("\nw:%s\ne:%s\nn:%s\ns:%s\n\n",
+	printf("\nw:%s#\ne:%s#\nn:%s#\ns:%s#\n\n",
 	map_data->west, map_data->east, map_data->north,map_data->south);
 	printf("floor:\n%d %d %d\nceiling:\n%d %d %d\nstarting:%c\n",
 	map_data->f_red, 
