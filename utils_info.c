@@ -31,15 +31,10 @@ char	*get_path(char *trimmed, t_data *map_data)
 	i = 0;
 	while (trimmed[i] != '.' && trimmed[i] && trimmed[i + 1] != '/')
 		i++;
-	printf("trimmed[i]:%c\n", trimmed[i]);
-	while (trimmed[i])
+	if (!trimmed[i] || ft_strlen(&trimmed[i]) < 3)
 	{
-		if (!trimmed[i] || ft_strlen(&trimmed[i]) < 3)
-		{
-			free(trimmed);
-			wrong_map_exit(map_data, 23);
-		}
-		i++;
+		free(trimmed);
+		wrong_map_exit(map_data, 23);
 	}
 	return (ft_strtrim(&trimmed[i], "\n"));
 }
