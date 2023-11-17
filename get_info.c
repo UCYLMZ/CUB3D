@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:31:17 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:25:20 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/11/14 14:04:10 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	fill_info(t_data *map_data, char *line)
 		&& (trimmed[1] == ' ' && map_data->ceiling == NULL))
 		get_ceiling_floor(map_data, trimmed);
 	else if (((trimmed[0] == 'E' && trimmed[1] == 'A' && map_data->east == NULL)
-		|| (trimmed[0] == 'W' && trimmed[1] == 'E' && map_data->west == NULL)
-		|| (trimmed[0] == 'N' && trimmed[1] == 'O' && map_data->north == NULL)
-		|| (trimmed[0] == 'S' && trimmed[1] == 'O' && map_data->south == NULL))
+			|| (trimmed[0] == 'W' && trimmed[1] == 'E' && map_data->west == NULL)
+			|| (trimmed[0] == 'N' && trimmed[1] == 'O' && map_data->north == NULL)
+			|| (trimmed[0] == 'S' && trimmed[1] == 'O' && map_data->south == NULL))
 		&& is_it_ws(trimmed[2]))
 		get_textures(map_data, trimmed);
 	else
@@ -61,7 +61,6 @@ void	get_info(t_data *map_data, int flag, char **new_map)
 	while (map_data->whole_map[i])
 		map_data->map[j++] = ft_strdup(map_data->whole_map[i++]);
 	map_data->map[j] = NULL;
-
 }
 
 void	set_clean_map(t_data *map_data, char **new_map, int count)

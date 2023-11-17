@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_check.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 13:59:43 by uyilmaz           #+#    #+#             */
+/*   Updated: 2023/11/14 13:59:44 by uyilmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	check_rgb(t_data *map_data)
@@ -8,7 +20,7 @@ void	check_rgb(t_data *map_data)
 		|| map_data->f_red < 0 || map_data->f_red > 255
 		|| map_data->f_green < 0 || map_data->f_green > 255
 		|| map_data->c_blue < 0 || map_data->f_blue > 255)
-			wrong_map_exit(map_data, 21);
+		wrong_map_exit(map_data, 21);
 }
 
 void	check_map_characters(t_data *map_data, char **map)

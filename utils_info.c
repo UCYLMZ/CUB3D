@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 18:33:31 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/11/17 13:29:09 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,24 @@ int	is_line_empty(char *line)
 	return (0);
 }
 
-char	*get_path(char *trimmed)
+char	*get_path(char *trimmed, t_data *map_data)
 {
 	int	i;
 
-	i = -1;
-	while (trimmed[++i] != '.' && trimmed[i] && trimmed[i + 1] != '/')
+	i = 0;
+	while (trimmed[i] != '.' && trimmed[i] && trimmed[i + 1] != '/')
+		i++;
+	printf("trimmed[i]:%c\n", trimmed[i]);
+	while (trimmed[i])
 	{
-		if (!trimmed[i])
-			break ;
+		if (!trimmed[i] || ft_strlen(&trimmed[i]) < 3)
+		{
+			free(trimmed);
+			wrong_map_exit(map_data, 23);
+		}
+		i++;
 	}
-	return (ft_strdup(&trimmed[i]));
+	return (ft_strtrim(&trimmed[i], "\n"));
 }
 
 void	get_textures(t_data *map_data, char *trimmed)
@@ -51,13 +58,13 @@ void	get_textures(t_data *map_data, char *trimmed)
 		wrong_map_exit(map_data, 23);
 	}
 	if (splitted[0][0] == 'E' && splitted[0][1] == 'A')
-		map_data->east = ft_strdup(splitted[1]);
+		map_data->east = get_path(trimmed, map_data);
 	else if (splitted[0][0] == 'W' && splitted[0][1] == 'E')
-		map_data->west = ft_strdup(splitted[1]);
+		map_data->west = get_path(trimmed, map_data);
 	else if (splitted[0][0] == 'N' && splitted[0][1] == 'O')
-		map_data->north = ft_strdup(splitted[1]);
+		map_data->north = get_path(trimmed, map_data);
 	else if (splitted[0][0] == 'S' && splitted[0][1] == 'O')
-		map_data->south = ft_strdup(splitted[1]);
+		map_data->south = get_path(trimmed, map_data);
 	else
 		flag = 1;
 	i = -1;
