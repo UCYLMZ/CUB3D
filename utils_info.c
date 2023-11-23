@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/11/17 13:29:09 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/11/23 12:07:11 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ char	*get_path(char *trimmed, t_data *map_data)
 	int	i;
 
 	i = 0;
-	while (trimmed[i] != '.' && trimmed[i] && trimmed[i + 1] != '/')
+	while (trimmed[i] && (trimmed[i] != '.' || trimmed[i + 1] != '/'))
 		i++;
 	if (!trimmed[i] || ft_strlen(&trimmed[i]) < 3)
 	{
 		free(trimmed);
 		wrong_map_exit(map_data, 23);
 	}
+	i++;
 	return (ft_strtrim(&trimmed[i], "\n"));
 }
 

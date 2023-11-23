@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:57:59 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:24:52 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/11/23 12:06:51 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	wrong_map_exit(t_data *map_data, int code)
 	else if (code == 23)
 		perror("Wrong Texture File Name Error\n");
 	else if (code == 24)
-		perror("Wrong Character In Empty Line Error\n");
+		perror("Wrong Character In Line Error\n");
 	else if (code == 25)
 		perror("Wrong Character In The Map Error\n");
 	else if (code == 26)
