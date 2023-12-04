@@ -1,8 +1,13 @@
 SRCS	=	SRCS/GET_NEXT_LINE/get_next_line.c	SRCS/GET_NEXT_LINE/get_next_line_utils.c	\
-		cub3d.c	check_map.c exits.c get_info.c utils_info.c ft_split_special.c utils_check.c \
+		SRCS/cub3d.c SRCS/check_map.c SRCS/exits.c SRCS/get_info.c SRCS/utils_info.c SRCS/ft_split_special.c \
+		SRCS/utils_check.c SRCS/render.c
 
 
 LIBFT	=	SRCS/LIBFT/libft.a
+
+MLX		=	./SRCS/mlx/libmlx.a
+
+MLXF	=	-framework AppKit -framework OpenGL -L./SRCS/mlx -lmlx -I./SRCS/mlx -g
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -12,11 +17,10 @@ CC		=	gcc #-Wall -Wextra -Werror
 
 RM		=	rm -rf
 
-
 all:	$(NAME)
 
-$(NAME):	$(OBJS) $(LIBFT)
-				$(CC) $(OBJS) $(MLX) $(LIBFT) -o $(NAME)
+$(NAME):	$(OBJS) $(LIBFT) $(MLX)
+				$(CC) $(MLXF) $(OBJS) $(MLX) $(LIBFT) -o $(NAME)
 
 clean:
 			$(RM) $(OBJS)
@@ -26,11 +30,12 @@ $(LIBFT):
 			make bonus -C ./SRCS/libft
 
 $(MLX):
-			@make -C ./mlx
+			make -C ./SRCS/mlx
 
 fclean:
 			$(RM) $(OBJS) $(NAME)
 			make fclean -C ./SRCS/libft
+			make clean -C ./SRCS/mlx
 
 re:			fclean all
 

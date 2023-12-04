@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:24:03 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/04 15:45:52 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int	main(int ac, char **av)
 	map_data->c_blue,
 	map_data->direction);
 	// system("leaks cub3D");
+	render();
 	return (0);
 }

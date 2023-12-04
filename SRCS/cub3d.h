@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/10/31 17:24:39 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/04 16:07:25 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# include "SRCS/LIBFT/libft.h"
-# include "SRCS/GET_NEXT_LINE/get_next_line.h"
+# include "mlx/mlx.h"
+# include "LIBFT/libft.h"
+# include "GET_NEXT_LINE/get_next_line.h"
 # include <fcntl.h>
-# include <stdio.h> //sil!!!
+# include <stdio.h> //! sil!!!
 
 typedef struct s_data
 {
@@ -53,5 +54,6 @@ int		is_it_ws(int c);
 void	check_rgb(t_data *map_data);
 void	check_map_characters(t_data *map_data, char **map);
 void	check_borders(t_data *map_data, char **map);
+void	render();
 
 #endif
