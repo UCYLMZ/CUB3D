@@ -39,6 +39,6 @@ int	main(int ac, char **av)
 	map_data->c_blue,
 	map_data->direction);
 	// system("leaks cub3D");
-	render();
+	render(map_data);
 	return (0);
 }

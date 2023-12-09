@@ -40,6 +40,12 @@ typedef struct s_data
 	char	direction;
 }	t_data;
 
+typedef struct mlx_data_test
+{
+    void	*mlx;
+    void	*win;
+}	m_data;
+
 void	check_map(t_data *map_data);
 void	allocation_exit(t_data *map_data);
 void	wrong_argument_exit(t_data *map_data, int error_code);
