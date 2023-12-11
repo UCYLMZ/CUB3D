@@ -60,6 +60,8 @@ int		is_it_ws(int c);
 void	check_rgb(t_data *map_data);
 void	check_map_characters(t_data *map_data, char **map);
 void	check_borders(t_data *map_data, char **map);
+int		create_rgb_color(int red, int green, int blue);
+void	draw_fc(m_data *data, t_data *map_data);
 void	render();
 
 #endif
