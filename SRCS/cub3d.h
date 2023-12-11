@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/04 16:07:25 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:39:44 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "GET_NEXT_LINE/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h> //! sil!!!
+
+#define WIDTH 800
+#define HEIGHT 600
 
 typedef struct s_data
 {

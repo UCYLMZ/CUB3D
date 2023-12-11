@@ -1,6 +1,6 @@
 SRCS	=	SRCS/GET_NEXT_LINE/get_next_line.c	SRCS/GET_NEXT_LINE/get_next_line_utils.c	\
 		SRCS/cub3d.c SRCS/check_map.c SRCS/exits.c SRCS/get_info.c SRCS/utils_info.c SRCS/ft_split_special.c \
-		SRCS/utils_check.c SRCS/render.c
+		SRCS/utils_check.c SRCS/render.c SRCS/colors.c
 
 
 LIBFT	=	SRCS/LIBFT/libft.a
