@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:02:03 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 03:02:04 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 05:47:51 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,40 @@
 void	move_forward(t_data *data)
 {
 	if (data->int_map[(int)(data->pos_y)]
-		[(int)(data->pos_x + data->dir_x * data->speed)] == 48)
+		[(int)(data->pos_x + data->dir_x * data->speed)] == 0)
 		data->pos_x += data->dir_x * data->speed;
 	if (data->int_map[(int)(data->pos_y + data->dir_y * data->speed)]
-		[(int)(data->pos_x)] == 48)
+		[(int)(data->pos_x)] == 0)
 		data->pos_y += data->dir_y * data->speed;
 }
 
 void	move_back(t_data *data)
 {
 	if (data->int_map[(int)(data->pos_y)]
-		[(int)(data->pos_x - data->dir_x * data->speed)] == 48)
+		[(int)(data->pos_x - data->dir_x * data->speed)] == 0)
 		data->pos_x -= data->dir_x * data->speed;
 	if (data->int_map[(int)(data->pos_y - data->dir_y * data->speed)]
-		[(int)(data->pos_x)] == 48)
+		[(int)(data->pos_x)] == 0)
 		data->pos_y -= data->dir_y * data->speed;
 }
 
 void	move_right(t_data *data)
 {
 	if (data->int_map[(int)(data->pos_y)]
-		[(int)(data->pos_x + data->plane_x * data->speed)] == 48)
+		[(int)(data->pos_x + data->plane_x * data->speed)] == 0)
 		data->pos_x += data->plane_x * data->speed;
 	if (data->int_map[(int)(data->pos_y + data->plane_y * data->speed)]
-		[(int)(data->pos_x)] == 48)
+		[(int)(data->pos_x)] == 0)
 		data->pos_y += data->plane_y * data->speed;
 }
 
 void	move_left(t_data *data)
 {
 	if (data->int_map[(int)(data->pos_y)]
-		[(int)(data->pos_x - (data->plane_x * data->speed))] == 48)
+		[(int)(data->pos_x - (data->plane_x * data->speed))] == 0)
 		data->pos_x -= data->plane_x * data->speed;
 	if (data->int_map[(int)(data->pos_y - data->plane_y * data->speed)]
-		[(int)(data->pos_x)] == 48)
+		[(int)(data->pos_x)] == 0)
 		data->pos_y -= data->plane_y * data->speed;
 }
 

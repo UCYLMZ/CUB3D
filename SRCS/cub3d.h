@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 04:40:39 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:32:07 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	convert_to_int(t_data *map_data);
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 void	fill_player_dir(t_data *data, double x, double y);
-int		create_trgb(int t, int red, int green, int blue);
+int		create_rgb(int red, int green, int blue);
 void	img_pix_put(t_image *image, int x, int y, int color);
 unsigned int	get_pixel_in_texture(t_texture *texture, int x, int y);
 void	move_forward(t_data *data);

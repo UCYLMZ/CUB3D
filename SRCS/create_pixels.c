@@ -1,8 +1,8 @@
 #include "cub3d.h"
 
-int	create_trgb(int t, int red, int green, int blue)
+int	create_rgb(int red, int green, int blue)
 {
-	return (t << 24 | red << 16 | green << 8 | blue);
+	return (red << 16 | green << 8 | blue);
 }
 
 void	img_pix_put(t_image *image, int x, int y, int color)
