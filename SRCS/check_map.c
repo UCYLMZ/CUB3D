@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/11/23 12:00:27 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/13 05:24:44 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ void	get_map(t_data *map_data)
 	map_data->west = NULL;
 	map_data->east = NULL;
 	map_data->south = NULL;
+	map_data->dir_x = -1.0;		//!
+	map_data->dir_y = 0.0;		//!
+	map_data->plane_x = 0.0;	//!
+	map_data->plane_y = 0.66;	//!
+	map_data->speed = 0.2;		//!
+	map_data->rot_speed = 0.1;	//!
 }
 
 void	check_map(t_data *map_data)
@@ -93,4 +99,48 @@ void	check_map(t_data *map_data)
 	check_rgb(map_data);
 	check_map_characters(map_data, map_data->map);
 	check_borders(map_data, map_data->map);
+}
+
+void	convert_to_int(t_data *map_data)
+{
+	int	i;
+	int	j;
+
+	map_data->line_count -= 6;
+	map_data->int_map = (int**)malloc(sizeof(int*) * map_data->line_count);
+	i = 0;
+	while (i < map_data->line_count)
+		map_data->int_map[i++] = (int*)malloc(sizeof(int) * 64);
+	i = 0;
+	while (i < map_data->line_count)
+	{
+		j = 0;
+		while (map_data->map[i][j])
+		{
+			if (map_data->map[i][j] > 65)
+			{
+				map_data->pos_x = j;
+				map_data->pos_y = i;
+			}
+			map_data->int_map[i][j] = (int)map_data->map[i][j];
+			j++;
+		}
+		i++;
+	}
+
+
+	printf("\n");
+	i = 0;
+	while (i < map_data->line_count)
+	{
+		j = 0;
+		while (map_data->map[i][j])
+		{
+			printf("%d|", map_data->int_map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	
 }
