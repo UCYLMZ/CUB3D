@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:31:17 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/11/14 14:04:10 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:50:47 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 void	fill_info(t_data *map_data, char *line)
 {
 	int		i;
-	char	*trimmed;
+	char	*trm;
 
 	i = 0;
 	while (is_it_ws(line[i]))
 		i++;
-	trimmed = ft_strdup(&line[i]);
-	if ((trimmed[0] == 'C' || trimmed[0] == 'F') && map_data->floor == NULL
-		&& (trimmed[1] == ' ' && map_data->ceiling == NULL))
-		get_ceiling_floor(map_data, trimmed);
-	else if (((trimmed[0] == 'E' && trimmed[1] == 'A' && map_data->east == NULL)
-			|| (trimmed[0] == 'W' && trimmed[1] == 'E' && map_data->west == NULL)
-			|| (trimmed[0] == 'N' && trimmed[1] == 'O' && map_data->north == NULL)
-			|| (trimmed[0] == 'S' && trimmed[1] == 'O' && map_data->south == NULL))
-		&& is_it_ws(trimmed[2]))
-		get_textures(map_data, trimmed);
+	trm = ft_strdup(&line[i]);
+	if ((trm[0] == 'C' || trm[0] == 'F') && map_data->floor == NULL
+		&& (trm[1] == ' ' && map_data->ceiling == NULL))
+		get_ceiling_floor(map_data, trm);
+	else if (((trm[0] == 'E' && trm[1] == 'A' && map_data->east == NULL)
+			|| (trm[0] == 'W' && trm[1] == 'E' && map_data->west == NULL)
+			|| (trm[0] == 'N' && trm[1] == 'O' && map_data->north == NULL)
+			|| (trm[0] == 'S' && trm[1] == 'O' && map_data->south == NULL))
+		&& is_it_ws(trm[2]))
+		get_textures(map_data, trm);
 	else
 	{
-		free(trimmed);
+		free(trm);
 		wrong_map_exit(map_data, 20);
 	}
-	free(trimmed);
+	free(trm);
 	free(line);
 }
 
@@ -108,4 +108,20 @@ void	clear_map(t_data *map_data)
 		allocation_exit(map_data);
 	spaceless[count] = NULL;
 	set_clean_map(map_data, spaceless, count);
+}
+
+int	long_line(char **map)
+{
+	int	i;
+	int	j;
+	int	lenght;
+
+	lenght = 0;
+	i = -1;
+	while (map[++i])
+	{
+		if (ft_strlen(map[i]) > lenght)
+			lenght = ft_strlen(map[i]);
+	}
+	return (lenght);
 }

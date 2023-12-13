@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:57:59 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/11/23 12:06:51 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:53:50 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	wrong_map_exit(t_data *map_data, int code)
 		perror("There Is No Starting Point In The Map Error\n");
 	else if (code == 28)
 		perror("Map Must Be Covered By Walls Correctly Error\n");
+	else if (code == 29)
+		perror("Wrong Texture File Error\n");
 	// system("leaks cub3D");
 	exit(code);
 }

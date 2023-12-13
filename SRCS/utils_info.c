@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/11/23 12:07:11 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:05:15 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_path(char *trimmed, t_data *map_data)
 		wrong_map_exit(map_data, 23);
 	}
 	i++;
-	return (ft_strtrim(&trimmed[i], "\n"));
+	return (ft_strtrim(&trimmed[i - 1], "\n"));
 }
 
 void	get_textures(t_data *map_data, char *trimmed)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 09:32:07 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:50:47 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ typedef struct s_data
 	double	speed;
 	double	rot_speed;
 	int		move[6];
-	t_texture textures[4];
+	t_texture textures[4]; // n e s w
 	m_data	*mlx_data;
 	t_image	img;
 }	t_data;
@@ -124,6 +124,7 @@ int		is_it_ws(int c);
 void	check_rgb(t_data *map_data);
 void	check_map_characters(t_data *map_data, char **map);
 void	check_borders(t_data *map_data, char **map);
+int		long_line(char **map);
 int		create_rgb_color(int red, int green, int blue);	//!
 void	draw_fc(t_data *map_data);						//!
 void	render(t_data *map_data); 						//!

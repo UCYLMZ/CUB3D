@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test1.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/13 10:17:47 by uyilmaz           #+#    #+#             */
+/*   Updated: 2023/12/13 15:24:25 by uyilmaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	calc_wall_x(t_data *data)
@@ -63,8 +75,6 @@ void	ray_casting_3(t_data *data)
 
 void	ray_casting_4(t_data *data)
 {
-	// getchar();
-    //printf("\n%f\n%f\n", data->side_dist_x, data->side_dist_y);
 	while (data->hit == 0)
 	{
 		if (data->side_dist_x < data->side_dist_y)
@@ -79,9 +89,6 @@ void	ray_casting_4(t_data *data)
 			data->map_y += data->step_y;
 			data->side = 1;
 		}
-        
-	// getchar();
-    // printf("\nmapx: %d\nmapy: %d\n", data->map_x, data->map_y);
 		if (data->int_map[data->map_y][data->map_x] > 0)
 			data->hit = 1;
 	}

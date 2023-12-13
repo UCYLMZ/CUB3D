@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 09:38:13 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:21:18 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,35 @@ void	get_map(t_data *map_data)
 	map_data->whole_map[i] = NULL;
 	check_empty_lines(map_data, map_data->whole_map);
 	map_data->direction = '0';
-	// map_data->ceiling = NULL;
-	// map_data->floor = NULL;
-	// map_data->north = NULL;
-	// map_data->west = NULL;
-	// map_data->east = NULL;
-	// map_data->south = NULL;
-	map_data->dir_x = -1.0;		//!
-	map_data->dir_y = 0.0;		//!
-	map_data->plane_x = 0.0;	//!
-	map_data->plane_y = 0.66;	//!
-	map_data->speed = 0.2;		//!
-	map_data->rot_speed = 0.1;	//!
-	map_data->skyc = create_rgb(map_data->c_red, map_data->c_green, map_data->c_blue);
-	map_data->floorc = create_rgb(map_data->f_red, map_data->f_green, map_data->f_blue);
 }
 
 void	check_map(t_data *map_data)
 {
+	int	i;
+
 	get_map(map_data);
 	clear_map(map_data);
 	check_rgb(map_data);
 	check_map_characters(map_data, map_data->map);
 	check_borders(map_data, map_data->map);
+	map_data->dir_x = -1.0;
+	map_data->dir_y = 0.0;
+	map_data->plane_x = 0.0;
+	map_data->plane_y = 0.66;
+	map_data->speed = 0.25;
+	map_data->rot_speed = 0.1;
+	map_data->skyc = create_rgb(map_data->c_red,
+			map_data->c_green, map_data->c_blue);
+	map_data->floorc = create_rgb(map_data->f_red,
+			map_data->f_green, map_data->f_blue);
+	map_data->line_count -= 6;
+	map_data->int_map = (int **)malloc(sizeof(int *) * map_data->line_count);
+	if (!map_data->int_map)
+		allocation_exit(map_data);
+	i = -1;
+	while (++i < map_data->line_count)
+		map_data->int_map[i] = malloc(sizeof(int) * long_line(map_data->map));
+	printf("longestline:%d\n", long_line(map_data->map));
 }
 
 void	convert_to_int(t_data *map_data)
@@ -108,44 +114,26 @@ void	convert_to_int(t_data *map_data)
 	int	i;
 	int	j;
 
-	map_data->line_count -= 6;
-	map_data->int_map = (int**)malloc(sizeof(int*) * map_data->line_count);
-	i = 0;
-	while (i < map_data->line_count)
-		map_data->int_map[i++] = (int*)malloc(sizeof(int) * 64);
-	i = 0;
-	while (i < map_data->line_count)
+	i = -1;
+	while (++i < map_data->line_count)
 	{
 		j = 0;
-		while (map_data->map[i][j])
+		while (map_data->map[i][j] && map_data->map[i][j] != '\n')
 		{
 			if (map_data->map[i][j] > 65)
 			{
 				map_data->pos_x = j;
 				map_data->pos_y = i;
-				map_data->int_map[i][j] = 0;
-				j++;
+				map_data->int_map[i][j++] = 0;
 				continue ;
 			}
-			map_data->int_map[i][j] = (int)map_data->map[i][j] - 48;
+			if (is_it_ws(map_data->map[i][j]))
+				map_data->int_map[i][j] = 2;
+			else
+				map_data->int_map[i][j] = map_data->map[i][j] - 48;
 			j++;
 		}
-		i++;
+		while (j < long_line(map_data->map))
+			map_data->int_map[i][j++] = 3;
 	}
-
-
-	printf("\n");
-	i = 0;
-	while (i < map_data->line_count)
-	{
-		j = 0;
-		while (map_data->map[i][j])
-		{
-			printf("%d|", map_data->int_map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	
 }

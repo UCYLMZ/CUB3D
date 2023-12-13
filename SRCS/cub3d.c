@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 05:49:21 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:24:11 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main_proc(t_data *data)
 
 int	exit_test()
 {
+	system("leaks cub3D");
 	exit(1);
 }
 
@@ -51,6 +52,7 @@ int	main(int ac, char **av)
 	map_data->map_name = av[1];
 	check_map(map_data);
 	printf("\nlinecount:%d\n", map_data->line_count);
+	
 	convert_to_int(map_data);
 
 	
@@ -73,6 +75,22 @@ int	main(int ac, char **av)
 
 	map_data->mlx_data = (m_data*)malloc(sizeof(m_data));
 
+	// printf("\n");
+	// i = 0;
+	// int j;
+	// while (i < map_data->line_count)
+	// {
+	// 	j = 0;
+	// 	while (map_data->map[i][j])
+	// 	{
+	// 		printf("%d|", map_data->int_map[i][j]);
+	// 		j++;
+	// 	}
+	// 	printf("\n");
+	// 	i++;
+	// }
+
 	start_game(map_data);
+	system("leaks cub3D");
 	return (0);
 }

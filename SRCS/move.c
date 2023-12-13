@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:02:03 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 05:47:51 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:07:26 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	player_move(t_data *data)
 	else if (data->move[3] == 1)
 		move_right(data);
 	if (data->move[4] == 1)
-		rotate_left(data);
-	else if (data->move[5] == 1)
 		rotate_right(data);
+	else if (data->move[5] == 1)
+		rotate_left(data);
 }
