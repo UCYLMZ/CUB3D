@@ -93,8 +93,8 @@ void	check_map(t_data *map_data)
 	map_data->dir_y = 0.0;
 	map_data->plane_x = 0.0;
 	map_data->plane_y = 0.66;
-	map_data->speed = 0.25;
-	map_data->rot_speed = 0.1;
+	map_data->speed = 0.025;
+	map_data->rot_speed = 0.025;
 	map_data->skyc = create_rgb(map_data->c_red,
 			map_data->c_green, map_data->c_blue);
 	map_data->floorc = create_rgb(map_data->f_red,

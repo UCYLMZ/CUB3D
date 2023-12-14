@@ -115,7 +115,7 @@ void	allocation_exit(t_data *map_data);
 void	wrong_argument_exit(t_data *map_data, int error_code);
 void	wrong_map_exit(t_data *map_data, int code);
 int		is_line_empty(char *line);
-char	**ft_split_special(const char *s);
+char	**ft_split_special(const char *s, t_data *map_data);
 void	clear_map(t_data *map_data);
 void	get_textures(t_data *map_data, char *trimmed);
 void	get_ceiling_floor(t_data *map_data, char *trimmed);

@@ -47,7 +47,7 @@ void	get_textures(t_data *map_data, char *trimmed)
 	char	**splitted;
 
 	flag = 0;
-	splitted = ft_split_special(trimmed);
+	splitted = ft_split_special(trimmed, map_data);
 	if (!splitted[1])
 	{
 		free_double_char(splitted);
@@ -105,7 +105,7 @@ void	get_ceiling_floor(t_data *map_data, char *trimmed)
 	char	**splitted;
 
 	flag = 0;
-	splitted = ft_split_special(trimmed);
+	splitted = ft_split_special(trimmed, map_data);
 	i = 0;
 	while (splitted[++i])
 	{

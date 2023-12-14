@@ -19,86 +19,74 @@ int	is_it_ws(int c)
 	return (0);
 }
 
-int	word_counter(const char *str)
-{
-	int	count;
-	int	i;
-	int	flag;
-
-	count = 0;
-	i = 0;
-	flag = 1;
-	while (str[i])
-	{
-		if (!is_it_ws(str[i]) && str[i] != ',' && flag == 1)
-		{
-			count++;
-			flag = 0;
-		}
-		else if (is_it_ws(str[i]) || str[i] == ',')
-			flag = 1;
-		i++;
-	}
-	return (count);
-}
-
-int	word_len(const char *str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (is_it_ws(str[i]) || str[i] == ',')
-		i++;
-	while (!is_it_ws(str[i]) && str[i] != ',' && str[i])
-	{
-		i++;
-		count++;
-	}
-	return (count);
-}
-
-char	*stringer(const char *src)
-{
-	char	*ret;
-	int		i;
-
-	ret = malloc(sizeof(char) * word_len(src) + 1);
-	i = 0;
-	while (*src && !is_it_ws(*src) && *src != ',')
-	{
-		ret[i] = *(src++);
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
-}
-
-char	**ft_split_special(const char *s)
+char	**handle_texture(const char *s, t_data *map_data)
 {
 	char	**result;
-	size_t	size;
-	size_t	i;
-	size_t	j;
+	char	**raw;
+	int		i;
+
+	result = malloc(sizeof(char *) * 3);
+	if (!result)
+		allocation_exit(map_data);
+	raw = ft_split(s, ' ');
+	if (!raw[0][0] || !raw[1][0])
+	{
+		free_double_char(raw);
+		free(result);
+		wrong_map_exit(map_data, 23);
+	}
+	result[0] = ft_strdup(raw[0]);
+	free_double_char(raw);
+	result[2] = NULL;
+	i = 0;
+	while (s[i] && s[i] != '.' && s[i + 1] != '/')
+		i++;
+	result[1] = ft_strtrim(&s[i], "\n");
+	return (result);
+}
+
+char	**handle_fc(const char *s, t_data *map_data)
+{
+	char	**result;
+	char	**raw;
+	char	**first_index;
+	int		i;
+
+	result = malloc(sizeof(char *) * 5);
+	if (!result)
+		allocation_exit(map_data);
+	raw = ft_split(s, ',');
+	i = -1;
+	while (raw[++i]);
+	if (i != 3)
+	{
+		free(result);
+		wrong_map_exit(map_data, 21);
+	}
+	first_index = ft_split(raw[0], ' ');
+	result[0] = ft_strdup(first_index[0]);
+	result[1] = ft_strdup(first_index[1]);
+	result[2] = ft_strtrim(raw[1], " \n");
+	result[3] = ft_strtrim(raw[2], " \n");
+	result[4] = NULL;
+	free_double_char(raw);
+	free_double_char(first_index);
+	return (result);
+}
+
+char	**ft_split_special(const char *s, t_data *map_data)
+{
+	char	**result;
 
 	if (!s)
 		return (NULL);
-	size = word_counter(s);
-	result = malloc(sizeof(char *) * (size + 1));
-	if (result == NULL)
-		return (0);
-	i = 0;
-	j = 0;
-	while (j < size && s[i])
-	{
-		while (s[i] && is_it_ws(s[i]) || s[i] == ',')
-			i++;
-		result[j] = stringer(&s[i]);
-		while (s[i] && !is_it_ws(s[i]) && s[i] != ',')
-			i++;
-		j++;
-	}
-	result[j] = NULL;
+	if ((s[0] == 'F' || s[0] == 'C') && s[1] == ' ')
+		result = handle_fc(s, map_data);
+	else
+		result = handle_texture(s, map_data);
+
+	// int i = -1;
+	// while (result[++i])
+	// 	printf("#%s#\n", result[i]);
 	return (result);
 }

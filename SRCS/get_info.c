@@ -45,6 +45,8 @@ void	get_info(t_data *map_data, int flag, char **new_map)
 	int	j;
 
 	free_double_char(map_data->whole_map);
+	map_data->floor = NULL;
+	map_data->ceiling = NULL;
 	map_data->whole_map = new_map;
 	if (flag == 2)
 	{
@@ -86,6 +88,10 @@ void	set_clean_map(t_data *map_data, char **new_map, int count)
 			new_map[j++] = ft_strdup(map_data->whole_map[i]);
 		}
 	}
+	map_data->west = NULL;
+	map_data->north = NULL;
+	map_data->south = NULL;
+	map_data->east = NULL;
 	get_info(map_data, flag, new_map);
 }
 
