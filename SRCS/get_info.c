@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:31:17 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:21:09 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:59:48 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,6 @@ void	set_clean_map(t_data *map_data, char **new_map, int count)
 			new_map[j++] = ft_strdup(map_data->whole_map[i]);
 		}
 	}
-	map_data->west = NULL;
-	map_data->north = NULL;
-	map_data->south = NULL;
-	map_data->east = NULL;
 	get_info(map_data, flag, new_map);
 }
 
@@ -109,6 +105,10 @@ void	clear_map(t_data *map_data)
 	spaceless = malloc(sizeof(char *) * (count + 1));
 	if (!spaceless)
 		allocation_exit(map_data);
+	map_data->west = NULL;
+	map_data->north = NULL;
+	map_data->south = NULL;
+	map_data->east = NULL;
 	spaceless[count] = NULL;
 	set_clean_map(map_data, spaceless, count);
 }

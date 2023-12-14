@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:59 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 03:02:00 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:00:16 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	rotate_right(t_data *data)
 	data->plane_y = old_plane_x * sin(data->rot_speed) + data->plane_y
 		* cos(data->rot_speed);
 }
-
 
 void	fill_player_dir(t_data *data, double x, double y)
 {

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:04:51 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:55:22 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,21 @@ int	main_proc(t_data *data)
 {
 	player_move(data);
 	ray_casting(data);
-	mlx_put_image_to_window(data->mlx_data->mlx, data->mlx_data->win, data->img.image, 0, 0);
+	mlx_put_image_to_window(data->mlx_data->mlx, data->mlx_data->win,
+		data->img.image, 0, 0);
 	return (0);
-}
-
-int	exit_from_win(t_data *map)
-{
-	printf("exitfunc\n\n");
-	fflush(stdout);
-	system("leaks cub3D");
-	exit(1);
 }
 
 void	start_game(t_data *data)
 {
 	data->mlx_data->mlx = mlx_init();
-	data->mlx_data->win = mlx_new_window(data->mlx_data->mlx, WIDTH, HEIGHT, "Cub3d");
-	//start_init(data);
+	data->mlx_data->win = mlx_new_window(data->mlx_data->mlx,
+			WIDTH, HEIGHT, "Cub3d");
 	start_img(data);
 	xpm_to_textures(data);
 	mlx_hook(data->mlx_data->win, 2, 0, key_press, data);
 	mlx_hook(data->mlx_data->win, 3, 0, key_release, data);
-	mlx_hook(data->mlx_data->win, 17, 1L << 2, exit_from_win, data); //! exit fonksiyonu yapilacak
+	mlx_hook(data->mlx_data->win, 17, 1L << 2, exit_from_win, data);
 	mlx_loop_hook(data->mlx_data->mlx, &main_proc, data);
 	mlx_loop(data->mlx_data->mlx);
 }
@@ -53,11 +46,9 @@ int	main(int ac, char **av)
 		allocation_exit(map_data);
 	map_data->map_name = av[1];
 	check_map(map_data);
-	printf("\nlinecount:%d\n", map_data->line_count);
-	
 	convert_to_int(map_data);
 
-	
+
 	int i = -1;
 	printf("map:\n");
 	while (map_data->map[++i])

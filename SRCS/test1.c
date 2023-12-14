@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:17:47 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 15:24:25 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:02:58 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ray_casting_2(t_data *data)
 
 	camera_x = 2 * data->x / (double)WIDTH - 1;
 	data->raydir_x = data->dir_x + data->plane_x * camera_x;
-	data->raydir_y = data->dir_y + data->plane_y * camera_x; 
+	data->raydir_y = data->dir_y + data->plane_y * camera_x;
 	data->map_x = (int)data->pos_x;
 	data->map_y = (int)data->pos_y;
 	if (data->raydir_x == 0)

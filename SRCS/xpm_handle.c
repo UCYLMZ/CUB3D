@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:43 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 15:24:44 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:01:25 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	start_img(t_data *data)
 
 void	xpm_to_textures(t_data *data)
 {
-   	data->textures[0].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
+	data->textures[0].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
 			data->north, &data->textures[0].w, &data->textures[0].h);
-   	data->textures[1].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
+	data->textures[1].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
 			data->east, &data->textures[1].w, &data->textures[1].h);
-   	data->textures[2].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
+	data->textures[2].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
 			data->south, &data->textures[2].w, &data->textures[2].h);
-   	data->textures[3].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
+	data->textures[3].image = mlx_xpm_file_to_image(data->mlx_data->mlx,
 			data->west, &data->textures[3].w, &data->textures[3].h);
 	if (!data->textures[0].image || !data->textures[1].image
 		|| !data->textures[2].image || !data->textures[3].image)

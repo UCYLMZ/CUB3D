@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:02:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 03:02:17 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:58:05 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ char	**handle_fc(const char *s, t_data *map_data)
 	if (!result)
 		allocation_exit(map_data);
 	raw = ft_split(s, ',');
-	i = -1;
-	while (raw[++i]);
+	i = 0;
+	while (raw[i])
+		i++;
 	if (i != 3)
 	{
 		free(result);
@@ -68,7 +69,6 @@ char	**handle_fc(const char *s, t_data *map_data)
 	result[1] = ft_strdup(first_index[1]);
 	result[2] = ft_strtrim(raw[1], " \n");
 	result[3] = ft_strtrim(raw[2], " \n");
-	result[4] = NULL;
 	free_double_char(raw);
 	free_double_char(first_index);
 	return (result);
@@ -81,12 +81,11 @@ char	**ft_split_special(const char *s, t_data *map_data)
 	if (!s)
 		return (NULL);
 	if ((s[0] == 'F' || s[0] == 'C') && s[1] == ' ')
+	{
 		result = handle_fc(s, map_data);
+		result[4] = NULL;
+	}
 	else
 		result = handle_texture(s, map_data);
-
-	// int i = -1;
-	// while (result[++i])
-	// 	printf("#%s#\n", result[i]);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:01:39 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:52:59 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	check_map_characters(t_data *map_data, char **map);
 void	check_borders(t_data *map_data, char **map);
 int		long_line(char **map);
 void	convert_to_int(t_data *map_data);
+
 
 //???
 
