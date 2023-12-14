@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:59 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/14 15:00:16 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:26:45 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	rotate_right(t_data *data)
 		* sin(data->rot_speed);
 	data->dir_y = old_dir_x * sin(data->rot_speed) + data->dir_y
 		* cos(data->rot_speed);
-	data->plane_x = data-> plane_x * cos(data->rot_speed) - data->plane_y
+	data->plane_x = data->plane_x * cos(data->rot_speed) - data->plane_y
 		* sin(data->rot_speed);
 	data->plane_y = old_plane_x * sin(data->rot_speed) + data->plane_y
 		* cos(data->rot_speed);

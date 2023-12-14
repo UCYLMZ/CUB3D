@@ -6,11 +6,13 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:55:22 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:13:53 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//! 		YONLERIIN TEXLERINI KONTROL ETMEYI UNUTMA
 
 int	main_proc(t_data *data)
 {

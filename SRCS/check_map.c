@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 15:21:18 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:11:42 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,38 @@ void	check_map(t_data *map_data)
 	printf("longestline:%d\n", long_line(map_data->map));
 }
 
+void	set_player_dir(char c, t_data *data)
+{
+	if (c == 'N')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = -1.0;
+		data->plane_x = 0.66;
+		data->plane_y = 0.0;
+	}
+	else if (c == 'W')
+	{
+		data->dir_x = -1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
+		data->plane_y = -0.66;
+	}
+	else if (c == 'E')
+	{
+		data->dir_x = 1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
+		data->plane_y = 0.66;
+	}
+	else if (c== 'S')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = 1.0;
+		data->plane_x = -0.66;
+		data->plane_y = 0.0;
+	}
+}
+
 void	convert_to_int(t_data *map_data)
 {
 	int	i;
@@ -122,8 +154,9 @@ void	convert_to_int(t_data *map_data)
 		{
 			if (map_data->map[i][j] > 65)
 			{
-				map_data->pos_x = j;
-				map_data->pos_y = i;
+				map_data->pos_x = j + 0.5;
+				map_data->pos_y = i + 0.5;
+				set_player_dir(map_data->map[i][j], map_data);
 				map_data->int_map[i][j++] = 0;
 				continue ;
 			}
