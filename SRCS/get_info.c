@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:31:17 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 13:50:47 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:21:09 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ void	get_info(t_data *map_data, int flag, char **new_map)
 	map_data->ceiling = NULL;
 	map_data->whole_map = new_map;
 	if (flag == 2)
-	{
-		free_double_char(map_data->whole_map);
 		wrong_map_exit(map_data, 22);
-	}
 	i = -1;
 	while (++i < 6)
 		fill_info(map_data, map_data->whole_map[i]);

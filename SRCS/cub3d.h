@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 13:50:47 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:01:39 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,6 @@ void	check_rgb(t_data *map_data);
 void	check_map_characters(t_data *map_data, char **map);
 void	check_borders(t_data *map_data, char **map);
 int		long_line(char **map);
-int		create_rgb_color(int red, int green, int blue);	//!
-void	draw_fc(t_data *map_data);						//!
-void	render(t_data *map_data); 						//!
 void	convert_to_int(t_data *map_data);
 
 //???
@@ -149,6 +146,7 @@ int	key_release(int keycode, t_data *data);
 int	ray_casting(t_data *data);
 void	start_img(t_data *data);
 void	calc_texture_pixel_color(t_data *data);
+int		exit_from_win(t_data *map);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:02:07 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/13 03:58:37 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:01:50 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	key_press(int keycode, t_data *data)
 	else if (keycode == 124)
 		data->move[5] = 1;
 	if (keycode == 53)
-	{
-		//free_game(data);
-		exit(0);
-	}
+		exit_from_win(data);
 	return (0);
 }
 

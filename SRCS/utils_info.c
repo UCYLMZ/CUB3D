@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/13 10:05:15 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:18:05 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,27 @@ void	get_textures(t_data *map_data, char *trimmed)
 {
 	int		i;
 	int		flag;
-	char	**splitted;
+	char	**spltd;
 
 	flag = 0;
-	splitted = ft_split_special(trimmed, map_data);
-	if (!splitted[1])
+	spltd = ft_split_special(trimmed, map_data);
+	if (!spltd[1])
 	{
-		free_double_char(splitted);
+		free_double_char(spltd);
 		wrong_map_exit(map_data, 23);
 	}
-	if (splitted[0][0] == 'E' && splitted[0][1] == 'A')
+	if (spltd[0][0] == 'E' && spltd[0][1] == 'A' && !map_data->east)
 		map_data->east = get_path(trimmed, map_data);
-	else if (splitted[0][0] == 'W' && splitted[0][1] == 'E')
+	else if (spltd[0][0] == 'W' && spltd[0][1] == 'E' && !map_data->west)
 		map_data->west = get_path(trimmed, map_data);
-	else if (splitted[0][0] == 'N' && splitted[0][1] == 'O')
+	else if (spltd[0][0] == 'N' && spltd[0][1] == 'O' && !map_data->north)
 		map_data->north = get_path(trimmed, map_data);
-	else if (splitted[0][0] == 'S' && splitted[0][1] == 'O')
+	else if (spltd[0][0] == 'S' && spltd[0][1] == 'O' && !map_data->south)
 		map_data->south = get_path(trimmed, map_data);
 	else
 		flag = 1;
 	i = -1;
-	free_double_char(splitted);
+	free_double_char(spltd);
 	if (flag == 1)
 		wrong_map_exit(map_data, 20);
 }
