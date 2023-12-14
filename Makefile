@@ -14,7 +14,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	cub3D
 
-CC		=	gcc #-Wall -Wextra -Werror
+CC		=	gcc -Wall -Wextra -Werror
 
 RM		=	rm -rf
 

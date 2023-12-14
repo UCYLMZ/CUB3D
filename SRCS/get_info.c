@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:31:17 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:59:48 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:08:55 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	set_clean_map(t_data *map_data, char **new_map, int count)
 	int	j;
 	int	flag;
 
+	(void)count;
 	i = -1;
 	j = 0;
 	flag = 0;
@@ -115,9 +116,8 @@ void	clear_map(t_data *map_data)
 
 int	long_line(char **map)
 {
-	int	i;
-	int	j;
-	int	lenght;
+	int		i;
+	size_t	lenght;
 
 	lenght = 0;
 	i = -1;

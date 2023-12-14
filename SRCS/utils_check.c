@@ -6,7 +6,7 @@
 /*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:59:43 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 15:03:08 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:09:38 by mdiraga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	check_horizantal(t_data *map_data, char **map, int i, int j)
 	}
 }
 
-void	check_vertical(t_data *map_data, char **map, int i, int j)
+void	check_vertical(t_data *map_data, char **map, int i, size_t j)
 {
 	int	backup;
 
