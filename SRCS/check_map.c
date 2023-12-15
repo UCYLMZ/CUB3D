@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/15 15:26:43 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:10:15 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ void	convert_to_int(t_data *map_data)
 				map_data->pos_x = j + 0.5;
 				map_data->pos_y = i + 0.5;
 				set_player_dir(map_data->map[i][j], map_data);
-				map_data->int_map[i][j++] = 0;
+				map_data->int_map[i][j] = 0;
 				continue ;
 			}
-			if (is_it_ws(map_data->map[i][j]))
+			if (map_data->int_map[i][j] == ' ')
 				map_data->int_map[i][j] = 2;
 			else
 				map_data->int_map[i][j] = map_data->map[i][j] - 48;

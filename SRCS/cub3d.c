@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/15 15:31:25 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:09:29 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ int	main(int ac, char **av)
 	check_map(map_data);
 	convert_to_int(map_data);
 	map_data->mlx_data = (t_data_m *)malloc(sizeof(t_data_m));
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 6; j++)
+			printf("%d", map_data->int_map[i][j]);
+		printf("\n");
+	}
+	printf("\n");
 	start_game(map_data);
 	return (0);
 }
