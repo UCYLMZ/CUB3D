@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:39 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:11:42 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:26:43 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ void	convert_to_int(t_data *map_data)
 	i = -1;
 	while (++i < map_data->line_count)
 	{
-		j = 0;
-		while (map_data->map[i][j] && map_data->map[i][j] != '\n')
+		j = -1;
+		while (map_data->map[i][++j] && map_data->map[i][j] != '\n')
 		{
 			if (map_data->map[i][j] > 65)
 			{
@@ -131,7 +131,6 @@ void	convert_to_int(t_data *map_data)
 				map_data->int_map[i][j] = 2;
 			else
 				map_data->int_map[i][j] = map_data->map[i][j] - 48;
-			j++;
 		}
 		while (j < long_line(map_data->map))
 			map_data->int_map[i][j++] = 3;

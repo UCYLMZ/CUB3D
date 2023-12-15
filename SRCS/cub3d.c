@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:59:07 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:13:53 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:31:25 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//! 		YONLERIIN TEXLERINI KONTROL ETMEYI UNUTMA
 
 int	main_proc(t_data *data)
 {
@@ -21,6 +19,18 @@ int	main_proc(t_data *data)
 	mlx_put_image_to_window(data->mlx_data->mlx, data->mlx_data->win,
 		data->img.image, 0, 0);
 	return (0);
+}
+
+void	check_file_name(t_data *map_data, char *name)
+{
+	int	len;
+
+	len = ft_strlen(name);
+	if (len < 5)
+		wrong_argument_exit(map_data, 11);
+	if (name[len - 1] != 'b' || name[len - 2] != 'u' || name[len - 3] != 'c'
+		|| name[len - 4] != '.')
+		wrong_argument_exit(map_data, 11);
 }
 
 void	start_game(t_data *data)
@@ -47,45 +57,10 @@ int	main(int ac, char **av)
 	if (!map_data)
 		allocation_exit(map_data);
 	map_data->map_name = av[1];
+	check_file_name(map_data, av[1]);
 	check_map(map_data);
 	convert_to_int(map_data);
-
-
-	int i = -1;
-	printf("map:\n");
-	while (map_data->map[++i])
-		printf("%s", map_data->map[i]);
-	printf("\nw:%s#\ne:%s#\nn:%s#\ns:%s#\n\n",
-	map_data->west, map_data->east, map_data->north,map_data->south);
-	printf("floor:\n%d %d %d\nceiling:\n%d %d %d\nstarting:%c\n",
-	map_data->f_red, 
-	map_data->f_green, 
-	map_data->f_blue, 
-	map_data->c_red, 
-	map_data->c_green, 
-	map_data->c_blue,
-	map_data->direction);
-	// system("leaks cub3D");
-	//render(map_data);
-
-	map_data->mlx_data = (m_data*)malloc(sizeof(m_data));
-
-	// printf("\n");
-	// i = 0;
-	// int j;
-	// while (i < map_data->line_count)
-	// {
-	// 	j = 0;
-	// 	while (map_data->map[i][j])
-	// 	{
-	// 		printf("%d|", map_data->int_map[i][j]);
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// 	i++;
-	// }
-
+	map_data->mlx_data = (t_data_m *)malloc(sizeof(t_data_m));
 	start_game(map_data);
-	system("leaks cub3D");
 	return (0);
 }

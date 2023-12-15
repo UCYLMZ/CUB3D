@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_special.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:02:16 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/14 14:58:05 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:56:08 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_it_ws(int c)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
+	if (c == 32 || c == 10)
 		return (1);
 	return (0);
 }
@@ -59,12 +59,12 @@ char	**handle_fc(const char *s, t_data *map_data)
 	i = 0;
 	while (raw[i])
 		i++;
-	if (i != 3)
+	first_index = ft_split(raw[0], ' ');
+	if (i != 3 || !first_index[1])
 	{
 		free(result);
 		wrong_map_exit(map_data, 21);
 	}
-	first_index = ft_split(raw[0], ' ');
 	result[0] = ft_strdup(first_index[0]);
 	result[1] = ft_strdup(first_index[1]);
 	result[2] = ft_strtrim(raw[1], " \n");
@@ -77,6 +77,7 @@ char	**handle_fc(const char *s, t_data *map_data)
 char	**ft_split_special(const char *s, t_data *map_data)
 {
 	char	**result;
+	int		i;
 
 	if (!s)
 		return (NULL);
@@ -87,5 +88,11 @@ char	**ft_split_special(const char *s, t_data *map_data)
 	}
 	else
 		result = handle_texture(s, map_data);
+	i = -1;
+	while (result[++i])
+	{
+		if (!result[i][0])
+			wrong_argument_exit(map_data, 21);
+	}
 	return (result);
 }

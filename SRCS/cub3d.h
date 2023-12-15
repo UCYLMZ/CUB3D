@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:24:18 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 16:10:08 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:29:53 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct mlx_data_test
 {
 	void	*mlx;
 	void	*win;
-}	m_data;
+}	t_data_m;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	void	*image;
 	char	*data;
@@ -105,8 +105,8 @@ typedef struct s_data
 	double		speed;
 	double		rot_speed;
 	int			move[6];
-	t_texture	textures[4]; // n e s w
-	m_data		*mlx_data;
+	t_texture	textures[4];
+	t_data_m	*mlx_data;
 	t_image		img;
 }	t_data;
 

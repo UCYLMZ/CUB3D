@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:59 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/14 16:26:45 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:30:30 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	fill_player_dir(t_data *data, double x, double y)
 		data->plane_x = 0;
 }
 
-void set_player_dir_ver(char c, t_data *data)
+void	set_player_dir_ver(char c, t_data *data)
 {
 	if (c == 'W')
 	{
@@ -73,7 +73,7 @@ void set_player_dir_ver(char c, t_data *data)
 		data->plane_x = 0.0;
 		data->plane_y = -0.66;
 	}
-	else if (c== 'S')
+	else if (c == 'S')
 	{
 		data->dir_x = 0.0;
 		data->dir_y = 1.0;

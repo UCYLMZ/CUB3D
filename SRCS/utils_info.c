@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 23:36:48 by uyilmaz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:18:05 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:31:06 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ char	*get_path(char *trimmed, t_data *map_data)
 {
 	int	i;
 
-	i = 0;
-	while (trimmed[i] && (trimmed[i] != '.' || trimmed[i + 1] != '/'))
+	i = 2;
+	while (trimmed[i] && trimmed[i] == ' '
+		&& (trimmed[i] != '.' || trimmed[i + 1] != '/'))
 		i++;
 	if (!trimmed[i] || ft_strlen(&trimmed[i]) < 3)
 	{
