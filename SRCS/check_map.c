@@ -106,39 +106,6 @@ void	check_map(t_data *map_data)
 	i = -1;
 	while (++i < map_data->line_count)
 		map_data->int_map[i] = malloc(sizeof(int) * long_line(map_data->map));
-	printf("longestline:%d\n", long_line(map_data->map));
-}
-
-void	set_player_dir(char c, t_data *data)
-{
-	if (c == 'N')
-	{
-		data->dir_x = 0.0;
-		data->dir_y = -1.0;
-		data->plane_x = 0.66;
-		data->plane_y = 0.0;
-	}
-	else if (c == 'W')
-	{
-		data->dir_x = -1.0;
-		data->dir_y = 0.0;
-		data->plane_x = 0.0;
-		data->plane_y = -0.66;
-	}
-	else if (c == 'E')
-	{
-		data->dir_x = 1.0;
-		data->dir_y = 0.0;
-		data->plane_x = 0.0;
-		data->plane_y = 0.66;
-	}
-	else if (c== 'S')
-	{
-		data->dir_x = 0.0;
-		data->dir_y = 1.0;
-		data->plane_x = -0.66;
-		data->plane_y = 0.0;
-	}
 }
 
 void	convert_to_int(t_data *map_data)

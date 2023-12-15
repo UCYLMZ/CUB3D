@@ -132,6 +132,7 @@ void			convert_to_int(t_data *map_data);
 void			rotate_left(t_data *data);
 void			rotate_right(t_data *data);
 void			fill_player_dir(t_data *data, double x, double y);
+void			set_player_dir(char c, t_data *data);
 int				create_rgb(int red, int green, int blue);
 void			img_pix_put(t_image *image, int x, int y, int color);
 unsigned int	get_pixel_in_texture(t_texture *texture, int x, int y);

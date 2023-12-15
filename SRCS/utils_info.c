@@ -42,7 +42,6 @@ char	*get_path(char *trimmed, t_data *map_data)
 
 void	get_textures(t_data *map_data, char *trimmed)
 {
-	int		i;
 	int		flag;
 	char	**spltd;
 
@@ -63,7 +62,6 @@ void	get_textures(t_data *map_data, char *trimmed)
 		map_data->south = get_path(trimmed, map_data);
 	else
 		flag = 1;
-	i = -1;
 	free_double_char(spltd);
 	if (flag == 1)
 		wrong_map_exit(map_data, 20);

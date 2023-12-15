@@ -63,7 +63,7 @@ void	player_move(t_data *data)
 	else if (data->move[3] == 1)
 		move_right(data);
 	if (data->move[4] == 1)
-		rotate_right(data);
-	else if (data->move[5] == 1)
 		rotate_left(data);
+	else if (data->move[5] == 1)
+		rotate_right(data);
 }

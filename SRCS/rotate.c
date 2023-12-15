@@ -63,3 +63,41 @@ void	fill_player_dir(t_data *data, double x, double y)
 	else
 		data->plane_x = 0;
 }
+
+void set_player_dir_ver(char c, t_data *data)
+{
+	if (c == 'W')
+	{
+		data->dir_x = -1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
+		data->plane_y = -0.66;
+	}
+	else if (c== 'S')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = 1.0;
+		data->plane_x = -0.66;
+		data->plane_y = 0.0;
+	}
+}
+
+void	set_player_dir(char c, t_data *data)
+{
+	if (c == 'N')
+	{
+		data->dir_x = 0.0;
+		data->dir_y = -1.0;
+		data->plane_x = 0.66;
+		data->plane_y = 0.0;
+	}
+	else if (c == 'E')
+	{
+		data->dir_x = 1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
+		data->plane_y = 0.66;
+	}
+	else
+		set_player_dir_ver(c, data);
+}
