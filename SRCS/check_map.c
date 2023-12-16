@@ -17,14 +17,10 @@ int	get_line_count(t_data *map_data)
 	int		fd;
 	int		count;
 	char	*line;
-	char	*map1;
 
-	map1 = ft_strjoin("MAPS", "/");
-	map_data->map_path = ft_strjoin(map1, map_data->map_name);
-	if (!map1 || !map_data->map_path)
+	map_data->map_path = ft_strdup(map_data->map_name);
+	if (!map_data->map_path)
 		allocation_exit(map_data);
-	if (map1)
-		free(map1);
 	fd = open(map_data->map_path, O_RDONLY);
 	if (fd < 0)
 		wrong_argument_exit(map_data, 11);

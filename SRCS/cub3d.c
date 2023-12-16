@@ -12,6 +12,11 @@
 
 #include "cub3d.h"
 
+int	create_rgb(int red, int green, int blue)
+{
+	return (red << 16 | green << 8 | blue);
+}
+
 int	main_proc(t_data *data)
 {
 	player_move(data);

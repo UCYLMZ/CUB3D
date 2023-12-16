@@ -79,14 +79,16 @@ void	check_vertical(t_data *map_data, char **map, int i, size_t j)
 	backup = i;
 	while (map[i][j] != '1')
 	{
-		if (!map[i] || ft_strlen(map[i]) < j || is_it_ws(map[i][j]))
+		if (!map[i + 1] || ft_strlen(map[i + 1]) < j || is_it_ws(map[i][j]))
 			wrong_map_exit(map_data, 28);
 		i++;
 	}
 	i = backup;
 	while (map[i][j] != '1')
 	{
-		if (i == 0 || is_it_ws(map[i][j]))
+		if (i == 0 || ft_strlen(map[i - 1]) < j)
+			wrong_map_exit(map_data, 28);
+		if (is_it_ws(map[i][j]))
 			wrong_map_exit(map_data, 28);
 		i--;
 	}

@@ -52,3 +52,48 @@ void	xpm_to_textures(t_data *data)
 			&(data->textures[3].bpp), &(data->textures[3].sizeline),
 			&(data->textures[3].endian));
 }
+
+void	calc_texture_pixel_color(t_data *data)
+{
+	int	color;
+
+	color = 0;
+	if (data->y < data->draw_start)
+		img_pix_put(&data->img, data->x, data->y, data->skyc);
+	else if (data->y >= data->draw_start && data->y <= data->draw_end)
+	{
+		data->tex_y = (int)data->tex_pos & (64 - 1);
+		data->tex_pos += data->step;
+		if (data->side == 0 && data->raydir_x > 0)
+			color = get_pixel_in_texture(&data->textures[0],
+					data->tex_x, data->tex_y);
+		else if (data->side == 0 && data->raydir_x < 0)
+			color = get_pixel_in_texture(&data->textures[1],
+					data->tex_x, data->tex_y);
+		else if (data->side == 1 && data->raydir_y > 0)
+			color = get_pixel_in_texture(&data->textures[2],
+					data->tex_x, data->tex_y);
+		else if (data->side == 1 && data->raydir_y < 0)
+			color = get_pixel_in_texture(&data->textures[3],
+					data->tex_x, data->tex_y);
+		img_pix_put(&data->img, data->x, data->y, color);
+	}
+	else
+		img_pix_put(&data->img, data->x, data->y, data->floorc);
+}
+
+void	img_pix_put(t_image *image, int x, int y, int color)
+{
+	char	*pixel;
+
+	pixel = image->data + (y * image->sizeline + x * (image->bpp / 8));
+	*(int *)pixel = color;
+}
+
+unsigned int	get_pixel_in_texture(t_texture *texture, int x, int y)
+{
+	char	*re;
+
+	re = texture->data + (y * texture->sizeline + x * (texture->bpp / 8));
+	return (*((unsigned int *)re));
+}
