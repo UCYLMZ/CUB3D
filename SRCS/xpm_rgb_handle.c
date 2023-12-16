@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xpm_handle.c                                       :+:      :+:    :+:   */
+/*   xpm_rgb_handle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdiraga <mdiraga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:43 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/14 15:01:25 by mdiraga          ###   ########.fr       */
+/*   Updated: 2023/12/16 16:43:45 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ void	calc_texture_pixel_color(t_data *data)
 	{
 		data->tex_y = (int)data->tex_pos & (64 - 1);
 		data->tex_pos += data->step;
-		if (data->side == 0 && data->raydir_x > 0)
+		if (data->side == 1 && data->raydir_y > 0)
 			color = get_pixel_in_texture(&data->textures[0],
 					data->tex_x, data->tex_y);
 		else if (data->side == 0 && data->raydir_x < 0)
 			color = get_pixel_in_texture(&data->textures[1],
 					data->tex_x, data->tex_y);
-		else if (data->side == 1 && data->raydir_y > 0)
+		else if (data->side == 1 && data->raydir_y < 0)
 			color = get_pixel_in_texture(&data->textures[2],
 					data->tex_x, data->tex_y);
-		else if (data->side == 1 && data->raydir_y < 0)
+		else if (data->side == 0 && data->raydir_x > 0)
 			color = get_pixel_in_texture(&data->textures[3],
 					data->tex_x, data->tex_y);
 		img_pix_put(&data->img, data->x, data->y, color);
