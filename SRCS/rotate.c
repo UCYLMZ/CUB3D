@@ -6,7 +6,7 @@
 /*   By: uyilmaz <uyilmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 03:01:59 by mdiraga           #+#    #+#             */
-/*   Updated: 2023/12/15 15:30:30 by uyilmaz          ###   ########.fr       */
+/*   Updated: 2023/12/16 16:53:23 by uyilmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ void	fill_player_dir(t_data *data, double x, double y)
 
 void	set_player_dir_ver(char c, t_data *data)
 {
-	if (c == 'W')
+	if (c == 'N')
 	{
-		data->dir_x = -1.0;
-		data->dir_y = 0.0;
-		data->plane_x = 0.0;
-		data->plane_y = -0.66;
+		data->dir_x = 0.0;
+		data->dir_y = -1.0;
+		data->plane_x = 0.66;
+		data->plane_y = 0.0;
 	}
 	else if (c == 'S')
 	{
@@ -84,12 +84,12 @@ void	set_player_dir_ver(char c, t_data *data)
 
 void	set_player_dir(char c, t_data *data)
 {
-	if (c == 'N')
+	if (c == 'W')
 	{
-		data->dir_x = 0.0;
-		data->dir_y = -1.0;
-		data->plane_x = 0.66;
-		data->plane_y = 0.0;
+		data->dir_x = -1.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
+		data->plane_y = -0.66;
 	}
 	else if (c == 'E')
 	{
